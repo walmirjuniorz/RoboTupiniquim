@@ -34,9 +34,9 @@
         Console.Write("Digite os Comandos: ");
         string comando = Console.ReadLine();
 
-        x = 1;
-        y = 2;
-        char direcao = 'N';
+        x = posicaoInicial[0] - '0';
+        y = posicaoInicial[2] - '0';
+        char direcao = posicaoInicial[4];
 
         for (int i = 0; i < comando.Length; i++)
         {
