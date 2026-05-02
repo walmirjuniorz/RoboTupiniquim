@@ -2,7 +2,6 @@
 {
     static void Main(string[] args)
     {
-
         Console.WriteLine("-------------------------");
         Console.WriteLine("Robô Tupiniquim");
         Console.WriteLine("-------------------------");
@@ -12,6 +11,8 @@
 
         string[] posicao = new string[3];
         string valorAtual = "";
+        int x = 0;
+        int y = 0;
         int indice = 0;
 
         for (int i = 0; i < posicaoInicial.Length; i++)
@@ -27,39 +28,46 @@
                 indice++;
             }
         }
+
         posicao[indice] = valorAtual;
 
-        Console.Clear();
-        Console.WriteLine("-------------------------");
-        Console.WriteLine("Lista de Comandos");
-        Console.WriteLine("E (Esquerda)");
-        Console.WriteLine("D (Direita)");
-        Console.WriteLine("M (Mover)");
-        Console.WriteLine("-------------------------");
-        Console.Write("Digite o Comando: ");
+        Console.Write("Digite os Comandos: ");
         string comando = Console.ReadLine();
 
-        char[] instrucoes = comando.ToCharArray();
+        x = 1;
+        y = 2;
+        char direcao = 'N';
 
         for (int i = 0; i < comando.Length; i++)
         {
             char comandoAtual = comando[i];
 
-            if (comandoAtual == 'E')
+            switch (comandoAtual)
             {
+                case 'E':
+                    if (direcao == 'N') direcao = 'O';
+                    else if (direcao == 'O') direcao = 'S';
+                    else if (direcao == 'S') direcao = 'L';
+                    else if (direcao == 'L') direcao = 'N';
+                    break;
 
-            }
-            else if (comandoAtual == 'D')
-            {
+                case 'D':
+                    if (direcao == 'N') direcao = 'L';
+                    else if (direcao == 'L') direcao = 'S';
+                    else if (direcao == 'S') direcao = 'O';
+                    else if (direcao == 'O') direcao = 'N';
+                    break;
 
-            }
-            else if (comandoAtual == 'M')
-            {
-
+                case 'M':
+                    if (direcao == 'N') y++;
+                    else if (direcao == 'S') y--;
+                    else if (direcao == 'L') x++;
+                    else if (direcao == 'O') x--;
+                    break;
             }
         }
 
-
+        Console.WriteLine("A Posiçao final é: " + x + " " + y + " " + direcao);
     }
 }
 
